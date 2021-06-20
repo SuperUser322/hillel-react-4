@@ -51,7 +51,8 @@ const Posts = () => {
         ...nextItems[itemIndex],
         ...item,
       };
-      axios.put(`https://60bb880442e1d00017620c95.mockapi.io/Posts/${nextItems.length}`, {      //эдит put
+
+      axios.put(`https://60bb880442e1d00017620c95.mockapi.io/Posts/${item.id}`, {      //эдит put
         title: item.title,
         body: item.body,
       })
@@ -62,7 +63,7 @@ const Posts = () => {
           console.log("Put error");
         });
 
-      console.log(`data item with id: ${nextItems.length} was edited`);
+      console.log(`data item with id: ${item.id} was edited`);
     }
     else {
       nextItems.push({
@@ -76,7 +77,7 @@ const Posts = () => {
         body: item.body,
       })
     .then(response => {
-      console.log(res.data);
+      console.log(response.data);
     })
     .catch(error => {
       console.log("Post error");
